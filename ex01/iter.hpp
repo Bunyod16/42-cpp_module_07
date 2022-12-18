@@ -2,11 +2,21 @@
 # define ITER_HPP
 # include <iostream>
 
-template<typename T, int N, typename Func>
-void iter(T (&arr)[N], Func f)
+template<typename T>
+void iter(T *arr, unsigned int size, void(*f)(T &arg))
 {
-    for (int i = 0; i < N; i++)
-        f(arr[i]);
+    for (unsigned int i = 0; i < size; i++)
+        f(*arr++);
 }
 
+template<typename T>
+void fuc3(T &c)
+{
+    int i;
+
+    i = -1;
+    while (c[++i]) {
+        c[i]-=32;
+    }
+}
 #endif
