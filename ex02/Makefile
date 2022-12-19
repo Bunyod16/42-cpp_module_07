@@ -1,6 +1,5 @@
 NAME = whatever
-SOURCES = main.cpp \
-			Array.cpp
+SOURCES = main.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
@@ -10,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) -o $@ $^
+	$(CC) -fsanitize=address -g3 -o $@ $^
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $<
